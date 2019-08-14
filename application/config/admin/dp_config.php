@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $config['title']      = 'AdminLTE';
 $config['title_mini'] = 'LT';
 $config['title_lg']   = 'LTE';
-
+$config['language']	= 'turkish';
 
 
 /* Display panel login */
