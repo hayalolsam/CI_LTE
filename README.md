@@ -23,7 +23,7 @@ PHP version 5.4 or newer is recommended.
 | :--- | :---: | :---: | :---: |
 | CodeIgniter | 3.1.10 | [Website](https://codeigniter.com) | [Github](https://github.com/bcit-ci/CodeIgniter/)
 | AdminLTE | 3.0.0 alpha 2 | [Website](https://adminlte.io) | [Github](https://github.com/riverocdavidb/admin-lte)
-| Bootstrap | 3.3.7 | [Website](https://getbootstrap.com/docs/3.3) | [Github](https://github.com/twbs/bootstrap)
+| Bootstrap | 4.3.1 | [Website](https://getbootstrap.com) | [Github](https://github.com/twbs/bootstrap)
 | jQuery | 3.1.4 | [Website](http://jquery.com) | [Github](https://github.com/jquery/jquery)
 
 ## Cited Project
