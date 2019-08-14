@@ -11,6 +11,7 @@ CodeIgniter 3 + AdminLTE 3+ Bootsrap 4 + Jquery 3
 ## Browser Compatibility
 Support for most major browsers including Chrome, Firefox, IE9+, Opera and Safari.
 ## Languages
+Open the `application\config\config.php` file with a text editor and change `$config['language']`.
   * Turkish
   * English
   * French
