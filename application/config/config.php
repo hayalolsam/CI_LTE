@@ -4,6 +4,7 @@ $config['base_url'] = '';
 $config['index_page'] = 'index.php';
 $config['uri_protocol']	= 'REQUEST_URI';
 $config['url_suffix'] = '';
+$config['language']	= 'turkish';
 $config['charset'] = 'UTF-8';
 $config['enable_hooks'] = TRUE;
 $config['subclass_prefix'] = 'MY_';

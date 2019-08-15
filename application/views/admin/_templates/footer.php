@@ -1,11 +1,11 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-			<footer class="main-footer">
-					<div class="pull-right hidden-xs">
-							<b><?php echo lang('footer_version'); ?></b> 1.1
-					</div>
-					<strong><?php echo lang('footer_copyright'); ?> &copy; 2014-<?php echo date('Y'); ?> <a href="http://almsaeedstudio.com" target="_blank">Almsaeed Studio</a> &amp; <a href="http://ulusanyazilim.com" target="_blank">Ulusan Software</a></strong> <?php echo lang('footer_all_rights_reserved'); ?>.
-			</footer>
-    </div>
+	<footer class="main-footer">
+		<strong><?php echo lang('footer_copyright'); ?> &copy; 2014-<?php echo date('Y'); ?> <a href="http://almsaeedstudio.com" target="_blank">Almsaeed Studio</a> &amp; <a href="http://ulusanyazilim.com" target="_blank">Ulusan Software</a></strong> <?php echo lang('footer_all_rights_reserved'); ?>
+		<div class="float-right d-none d-sm-inline-block">
+			<b><?php echo lang('footer_version'); ?></b> 1.1
+		</div>
+	</footer>
+</div>
 		<!-- jQuery -->
 		<script src="<?php echo base_url($plugins_dir . '/jquery/jquery.min.js'); ?>"></script>
 		<!-- jQuery UI 1.11.4 -->
@@ -16,7 +16,7 @@
 		</script>
 		<!-- Bootstrap 4 -->
 		<script src="<?php echo base_url($plugins_dir . '/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
-		<?php $consoleerror == false;
+		<?php $consoleerror = false;
 		if($consoleerror == true):/*Console ErrorMap Not Exist*/ ?>
 		<script>var consoleerror=true;</script>
 		<!-- ChartJS -->
@@ -53,9 +53,6 @@
 		<?php if ($this->router->fetch_class() == 'groups' && ($this->router->fetch_method() == 'create' OR $this->router->fetch_method() == 'edit')): ?>
 						<script src="<?php echo base_url($plugins_dir . '/tinycolor/tinycolor.min.js'); ?>"></script>
 						<script src="<?php echo base_url($plugins_dir . '/colorpickersliders/colorpickersliders.min.js'); ?>"></script>
-		<?php endif; ?>				
-				
-				
-				
+		<?php endif; ?>		
   </body>
 </html>

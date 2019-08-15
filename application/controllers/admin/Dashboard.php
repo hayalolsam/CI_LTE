@@ -41,7 +41,7 @@ class Dashboard extends Admin_Controller {
 
 
             /* TEST */
-            $this->data['url_exist']    = is_url_exist('http://127.0.0.1');
+            //$this->data['url_exist']    = is_url_exist('http://127.0.0.1');
 
 
             /* Load Template */
