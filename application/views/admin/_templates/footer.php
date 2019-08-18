@@ -43,7 +43,37 @@
 		<!-- FastClick -->
 		<script src="<?php echo base_url($plugins_dir . '/fastclick/fastclick.js'); ?>"></script>
 		<!-- AdminLTE App -->
-		<script src="<?php echo base_url($frameworks_dir . '/adminlte/js/adminlte.js'); ?>"></script>
+		<script>
+		/*!
+		 * AdminLTE v3.0.0-beta.2 (https://adminlte.io)
+		 * Copyright 2014-2019 Colorlib <http://colorlib.com>
+		 * Licensed under MIT (https://github.com/almasaeed2010/AdminLTE/blob/master/LICENSE)
+		 */
+		/* (function (global, factory) {
+			typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+			typeof define === 'function' && define.amd ? define(['exports'], factory) :
+			(global = global || self, factory(global.adminlte = {}));
+		}(this, function (exports) { 'use strict'; */
+		</script>
+		<script src="<?php echo base_url($frameworks_dir . '/adminlte/js/ControlSidebar.js'); ?>"></script>
+		<script src="<?php echo base_url($frameworks_dir . '/adminlte/js/Layout.js'); ?>"></script>
+		<script src="<?php echo base_url($frameworks_dir . '/adminlte/js/PushMenu.js'); ?>"></script>
+		<script src="<?php echo base_url($frameworks_dir . '/adminlte/js/TreeView.js'); ?>"></script>
+		<script src="<?php echo base_url($frameworks_dir . '/adminlte/js/DirectChat.js'); ?>"></script>
+		<script src="<?php echo base_url($frameworks_dir . '/adminlte/js/TodoList.js'); ?>"></script>
+		<script src="<?php echo base_url($frameworks_dir . '/adminlte/js/Widget.js'); ?>"></script>
+		<script>
+		/*   exports.ControlSidebar = ControlSidebar;
+			exports.DirectChat = DirectChat;
+			exports.Layout = Layout;
+			exports.PushMenu = PushMenu;
+			exports.TodoList = TodoList;
+			exports.Treeview = Treeview;
+			exports.Widget = Widget;
+			Object.defineProperty(exports, '__esModule', { value: true });
+		})); */
+		//# sourceMappingURL=adminlte.js.map
+		</script>
 		<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 		<script src="<?php echo base_url($frameworks_dir . '/adminlte/js/pages/dashboard.js'); ?>"></script>
 		<!-- AdminLTE for demo purposes -->

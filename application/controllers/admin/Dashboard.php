@@ -38,9 +38,21 @@ class Dashboard extends Admin_Controller {
             $this->data['memory_usage']      = $this->dashboard_model->memory_usage();
             $this->data['memory_peak_usage'] = $this->dashboard_model->memory_peak_usage(TRUE);
             $this->data['memory_usepercent'] = $this->dashboard_model->memory_usepercent(TRUE, FALSE);
-
-
-            /* TEST */
+						print $user->id;
+						/*extends sınıfına bak
+						*/
+						/*if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+		{
+			redirect('auth/login', 'refresh');
+		}
+		else
+		{
+			$this->data['users'] = $this->ion_auth->users()->result();
+			foreach ($this->data['users'] as $k => $user)
+			{
+				$this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+			}
+			$this->template->admin_render('admin/users/index', $this->data);*/
             //$this->data['url_exist']    = is_url_exist('http://127.0.0.1');
 
 

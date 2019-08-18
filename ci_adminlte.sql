@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 14 Ağu 2019, 22:34:50
+-- Üretim Zamanı: 17 Ağu 2019, 22:40:26
 -- Sunucu sürümü: 5.6.15-log
 -- PHP Sürümü: 5.4.24
 
@@ -44,7 +44,31 @@ CREATE TABLE IF NOT EXISTS `admin_preferences` (
 --
 
 INSERT INTO `admin_preferences` (`id`, `user_panel`, `sidebar_form`, `messages_menu`, `notifications_menu`, `tasks_menu`, `user_menu`, `ctrl_sidebar`, `transition_page`) VALUES
-(1, 0, 1, 0, 0, 0, 1, 0, 1);
+(1, 0, 0, 0, 0, 0, 1, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `chat`
+--
+
+CREATE TABLE IF NOT EXISTS `chat` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userId` int(11) DEFAULT NULL,
+  `message` text,
+  `updateDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Tablo döküm verisi `chat`
+--
+
+INSERT INTO `chat` (`id`, `userId`, `message`, `updateDate`) VALUES
+(1, 1, 'test', '2019-08-17 18:46:38'),
+(2, 2, 'asd', '2019-08-17 19:22:36'),
+(3, 1, 'merhaba', '2019-08-17 20:39:23'),
+(4, 1, 'nasilsin', '2019-08-17 20:39:51');
 
 -- --------------------------------------------------------
 
@@ -104,6 +128,30 @@ INSERT INTO `public_preferences` (`id`, `transition_page`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Tablo için tablo yapısı `todo-list`
+--
+
+CREATE TABLE IF NOT EXISTS `todo-list` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(15) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `status` int(1) NOT NULL,
+  `created` int(11) unsigned NOT NULL,
+  `changer` int(11) NOT NULL,
+  `updated` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Tablo döküm verisi `todo-list`
+--
+
+INSERT INTO `todo-list` (`id`, `user_id`, `title`, `status`, `created`, `changer`, `updated`) VALUES
+(1, '2', 'something', 1, 1566057339, 1, 1566059221);
+
+-- --------------------------------------------------------
+
+--
 -- Tablo için tablo yapısı `users`
 --
 
@@ -126,14 +174,15 @@ CREATE TABLE IF NOT EXISTS `users` (
   `company` varchar(100) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Tablo döküm verisi `users`
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '127.0.0.1', 'administrator', '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1565799263, 1, 'Admin', 'istrator', 'ADMIN', '0');
+(1, '127.0.0.1', 'administrator', '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1566034532, 1, 'Admin', 'istrator', 'ADMIN', '0'),
+(2, '', 'moderator', '', NULL, '', NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
