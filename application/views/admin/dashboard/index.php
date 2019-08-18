@@ -110,31 +110,12 @@
 				<!-- TO DO List -->
 				<div class="row">
 					<section class="col-lg-12 connectedSortable ui-sortable">
-						<div class="card">
-              <div class="card-header ui-sortable-handle" style="cursor: move;">
-                <h3 class="card-title">
-                  <i class="ion ion-clipboard mr-1"></i>
-                  To Do List
-                </h3>
-
-                <div class="card-tools">
-                  <ul class="pagination pagination-sm">
-                    <li class="page-item"><a href="#" class="page-link">«</a></li>
-                    <li class="page-item"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item"><a href="#" class="page-link">3</a></li>
-                    <li class="page-item"><a href="#" class="page-link">»</a></li>
-                  </ul>
-                </div>
-              </div>
-              <!-- /.card-header -->
-              <?php include("todolist.php");?>
-              <!-- /.card-body -->
-              <div class="card-footer clearfix">
-                <button type="button" class="btn btn-info float-right"><i class="fas fa-plus"></i> Add item</button>
-              </div>
-            </div>
-					<!-- /.card -->
+            <?php include("todolist.php");?>
+					</section>
+				</div>
+				<div class="row">
+					<section class="col-lg-12 connectedSortable ui-sortable">
+					<?php include("chat.php");?>
 					</section>
 				</div>
 			</div>

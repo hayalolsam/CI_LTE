@@ -43,38 +43,9 @@
 		<!-- FastClick -->
 		<script src="<?php echo base_url($plugins_dir . '/fastclick/fastclick.js'); ?>"></script>
 		<!-- AdminLTE App -->
-		<script>
-		/*!
-		 * AdminLTE v3.0.0-beta.2 (https://adminlte.io)
-		 * Copyright 2014-2019 Colorlib <http://colorlib.com>
-		 * Licensed under MIT (https://github.com/almasaeed2010/AdminLTE/blob/master/LICENSE)
-		 */
-		/* (function (global, factory) {
-			typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-			typeof define === 'function' && define.amd ? define(['exports'], factory) :
-			(global = global || self, factory(global.adminlte = {}));
-		}(this, function (exports) { 'use strict'; */
-		</script>
-		<script src="<?php echo base_url($frameworks_dir . '/adminlte/js/ControlSidebar.js'); ?>"></script>
-		<script src="<?php echo base_url($frameworks_dir . '/adminlte/js/Layout.js'); ?>"></script>
-		<script src="<?php echo base_url($frameworks_dir . '/adminlte/js/PushMenu.js'); ?>"></script>
-		<script src="<?php echo base_url($frameworks_dir . '/adminlte/js/TreeView.js'); ?>"></script>
-		<script src="<?php echo base_url($frameworks_dir . '/adminlte/js/DirectChat.js'); ?>"></script>
-		<script src="<?php echo base_url($frameworks_dir . '/adminlte/js/TodoList.js'); ?>"></script>
-		<script src="<?php echo base_url($frameworks_dir . '/adminlte/js/Widget.js'); ?>"></script>
-		<script>
-		/*   exports.ControlSidebar = ControlSidebar;
-			exports.DirectChat = DirectChat;
-			exports.Layout = Layout;
-			exports.PushMenu = PushMenu;
-			exports.TodoList = TodoList;
-			exports.Treeview = Treeview;
-			exports.Widget = Widget;
-			Object.defineProperty(exports, '__esModule', { value: true });
-		})); */
-		//# sourceMappingURL=adminlte.js.map
-		</script>
+		<script src="<?php echo base_url($frameworks_dir . '/adminlte/js/adminlte.min.js'); ?>"></script>
 		<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+		<script src="<?php echo base_url($frameworks_dir . '/adminlte/js/Widget.js'); ?>"></script>
 		<script src="<?php echo base_url($frameworks_dir . '/adminlte/js/pages/dashboard.js'); ?>"></script>
 		<!-- AdminLTE for demo purposes -->
 		<script src="<?php echo base_url($frameworks_dir . '/adminlte/js/demo.js'); ?>"></script><?php if ($this->router->fetch_class() == 'users' && ($this->router->fetch_method() == 'create' OR $this->router->fetch_method() == 'edit')): ?>
@@ -83,6 +54,119 @@
 		<?php if ($this->router->fetch_class() == 'groups' && ($this->router->fetch_method() == 'create' OR $this->router->fetch_method() == 'edit')): ?>
 						<script src="<?php echo base_url($plugins_dir . '/tinycolor/tinycolor.min.js'); ?>"></script>
 						<script src="<?php echo base_url($plugins_dir . '/colorpickersliders/colorpickersliders.min.js'); ?>"></script>
-		<?php endif; ?>		
+		<?php endif; ?>	
+		<script>
+		$(document).ready(function(){ // on document ready
+			$(".todo-list * input").change(function(e){
+				isChecked = $(this).prop('checked');
+				id = $(this).attr("id");
+				if(confirm('Are you sure?')) {
+					$.ajax({
+						type: "POST",
+						url: "ajax/todolist",
+						data: "is="+ encodeURIComponent(isChecked)+"&id="+id+"&user=<?php echo @$userid;?>",
+						dataType: 'json',
+						complete: function(z){}
+					});
+				}else{
+					if(isChecked==true){
+						$(this).parent().parent().toggleClass("done");
+						$(this).prop('checked', false);
+					}else{
+						$(this).parent().parent().toggleClass("done");
+						$(this).prop('checked', true);
+					}
+				}
+			});
+			$(".todo-list * .tools .fas").click(function(e){
+				$('.editmodal').html('');
+				if($(this).attr('class') == "fas fa-edit"){//Edit
+					
+					$(this).parent().parent().parent().append(modal);
+					var modal='<div class="modal fade" id="modal-default">'+
+					'<div class="modal-dialog">'+
+					'<div class="modal-content">'+
+					'<div class="modal-header">'+
+					'<h4 class="modal-title">Edit Todo-List #'+$(this).parent().parent().attr("id")+'</h4>'+
+					'<button type="button" class="close" data-dismiss="modal" aria-label="Close">'+
+					'<span aria-hidden="true">&times;</span>'+
+					'</button>'+
+					'</div>'+
+					'<div class="modal-body">'+
+					'<input class="form-control" value="'+ $(this).parent().parent().find('.text').html() +'" id="'+$(this).parent().parent().attr("id")+'">'+
+					'</div>'+
+					'<div class="modal-footer justify-content-between">'+
+					'<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>'+
+					'<button type="button" class="btn btn-primary">Save</button>'+
+					'</div>'+
+					'</div>'+
+					'</div>'+
+					'</div>';
+					$('.editmodal').html(modal);
+				}
+				if($(this).attr('class') == "fas fa-trash"){//Delete
+					if(confirm('Are you sure you want to delete this item?')) {
+						$.ajax({
+							type: "POST",
+							url: "ajax/tododel",
+							data: "&id="+$(this).parent().parent().attr("id"),
+							dataType: 'json',
+							complete: function(z) {
+								$.ajax({url: "",context: document.body,success: function(s,x){$(this).html(s);}});//reload
+							}
+						});
+					}
+				}
+			});
+			
+			$('.editmodal').on('click', '.btn-primary', function() {
+				text = $(this).parent().parent().find('input').val();
+				id = $(this).parent().parent().find('input').attr('id');
+				$.ajax({
+					type: "POST",
+					url: "ajax/todoup",
+					data: "text="+ text+"&id="+id,
+					dataType: 'json',
+					complete: function(z) {
+						$.ajax({url: "",context: document.body,success: function(s,x){$(this).html(s);}});//reload
+					}
+				});
+			});
+			$('#sendtodoadd').click(function(){
+				$.ajax({
+					type: "POST",
+					url: "ajax/todoadd",
+					data: "text="+$('#todoaddtext').val()+"&user=<?php echo @$userid;?>",
+					dataType: 'json',
+					complete: function(z) {
+						$.ajax({url: "",context: document.body,success: function(s,x){$(this).html(s);}});//reload
+					}
+				});
+			});
+			function reloadchat(message, clearChat) {
+					var model = $(".btn-send-comment").data("model");
+					var dir = $(".btn-send-comment").data("dir");
+					$.ajax({
+							url: "ajax/chat",
+							type: "POST",
+							data: {message: message, dir: dir},
+							success: function (html) {
+									if (clearChat == true) {
+											$("#chat_message").val("");
+									}
+									$("#chat-box").html(html);
+							}
+					});
+			}
+			setInterval(function () {
+					reloadchat('', false);
+			}, 2000);
+			$(".btn-send-comment").on("click", function () {
+					var message = $("#chat_message").val();
+					reloadchat(message, true);
+			});
+
+		});
+		</script>
   </body>
 </html>
