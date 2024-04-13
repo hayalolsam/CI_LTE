@@ -1,4 +1,4 @@
-# CI_LTE
+# Codeigniter & AdminLTE
 CodeIgniter 3 + AdminLTE 3+ Bootsrap 4 + Jquery 3
 ## Installation
 1. Unzip the package.
