@@ -31,4 +31,4 @@ PHP version 5.4 or newer is recommended.
 [CodeIgniter 3.1.10 with AdminLTE 2.3.11](https://github.com/domProjects/CI-AdminLTE) 
 Thanks [domProject](https://github.com/domProjects) 
 
-Contact & Info: teknosenator@gmail.com
+Contact & Info: www.hucrem.com | teknosenator@gmail.com
